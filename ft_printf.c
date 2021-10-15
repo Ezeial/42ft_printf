@@ -4,6 +4,6 @@
 int main() {
     char *zgeg = "a";
 
-	printf("|%c|", *(zgeg + 2));
+	printf("|%c |", *(zgeg + 2));
     return 0;
 }
