@@ -18,6 +18,10 @@ t_lookup g_lookupmap[] = {
 		.callback = handle_hexa
 	},
 	{
+		.specifier = 'p',
+		.callback = handle_pointer
+	},
+	{
 		.specifier = '\0',
 		.callback = NULL
 	}   

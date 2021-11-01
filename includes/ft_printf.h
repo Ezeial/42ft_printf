@@ -29,6 +29,7 @@ char *handle_decimal(t_arg_info arg_info, va_list *vargs);
 char *handle_string(t_arg_info arg_info, va_list *vargs);
 char *handle_char(t_arg_info arg_info, va_list *vargs);
 char *handle_hexa(t_arg_info arg_info, va_list *vargs);
+char *handle_pointer(t_arg_info arg_info, va_list *vargs);
 
 int ft_printf(char *format, ...);
 

@@ -29,9 +29,9 @@ int parse_arg(char **format, t_arg_info *arg_info, va_list *vargs)
 		arg_info->flag = **format;
 		(*format)++;
 	}
+	arg_info->width = parse_next_number(format);
 	if (**format == '*' && (*format)++)
 		arg_info->width = va_arg(*vargs, int);
-	arg_info->width = parse_next_number(format);
 	if (**format == '.')
 	{
 		(*format)++;

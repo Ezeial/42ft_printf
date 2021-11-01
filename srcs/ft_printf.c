@@ -15,7 +15,7 @@ int ft_printf(char *format, ...)
 		{
 			format++;
 			if (!parse_arg(&format, &arg_info, &vargs))
-				return (-1); 
+				return (-1);
 			char *str = get_into_map(arg_info.specifier).callback(arg_info, &vargs);
 			ft_putstr_fd(str, 1);
 			len += ft_strlen(str);

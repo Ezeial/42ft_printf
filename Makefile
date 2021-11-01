@@ -11,7 +11,8 @@ SRCS_NAME			=	ft_printf.c \
 							specifier_handling/handle_decimal.c \
 							specifier_handling/handle_string.c \
 							specifier_handling/handle_char.c \
-							specifier_handling/handle_hexa.c
+							specifier_handling/handle_hexa.c \
+							specifier_handling/handle_pointer.c
 
 SRCS				=	$(addprefix $(SRCS_DIR)/, $(SRCS_NAME))
 
