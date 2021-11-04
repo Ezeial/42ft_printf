@@ -31,7 +31,7 @@ NAME				=	libftprintf.a
 
 all:				$(NAME)
 
-$(NAME):			$(OBJS)
+$(NAME):			$(OBJS) $(HEADER)/ft_printf.h
 					make -C $(LIBFT)
 					cp $(LIBFT)/libft.a $(NAME)
 					ar rcs $(NAME) $(OBJS)
