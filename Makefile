@@ -1,47 +1,35 @@
-LIBFT				=	libft
-
-HEADER				=	includes
-
+LIBFT_DIR			=	libft
 SRCS_DIR			=	srcs
+HEADER_DIR				=	includes
 
-SRCS_NAME			=	ft_printf.c \
-							lookupmap.c \
-							parse_arg.c \
-							add_padding.c \
-							specifier_handling/handle_decimal.c \
-							specifier_handling/handle_string.c \
-							specifier_handling/handle_char.c \
-							specifier_handling/handle_hexa.c \
-							specifier_handling/handle_pointer.c
-
-SRCS				=	$(addprefix $(SRCS_DIR)/, $(SRCS_NAME))
+SRCS				=	$(wildcard $(SRCS_DIR)/*.c) \
+							# $(wildcard $(SRCS_DIR)/*/*.c) \
+							# $(wildcard $(SRCS_DIR)/*/*/*.c)
 
 OBJS				=	$(SRCS:.c=.o)
 
 CC					=	gcc
 RM					=	rm -f
-FLAGS				=	-Wall -Wextra -Werror -I./$(HEADER)
-
-# -I./$(LIBFT)
+FLAGS				=	-g -Wall -Wextra -Werror -I./$(HEADER_DIR)
 
 NAME				=	libftprintf.a
 
-%.o:				%.c
+%.o:				%.c $(HEADER_DIR)/libftprintf.h
 					$(CC) $(FLAGS) -c $< -o $@
 
 all:				$(NAME)
 
-$(NAME):			$(OBJS) $(HEADER)/ft_printf.h
-					make -C $(LIBFT)
-					cp $(LIBFT)/libft.a $(NAME)
+$(NAME):			$(OBJS)
+					make -C $(LIBFT_DIR)
+					cp $(LIBFT_DIR)/libft.a $(NAME)
 					ar rcs $(NAME) $(OBJS)
 
 clean:
-					make clean -C $(LIBFT)	
+					make clean -C $(LIBFT_DIR)	
 					$(RM) $(OBJS)
 
 fclean:				clean
-					make fclean -C $(LIBFT)	
+					make fclean -C $(LIBFT_DIR)	
 					$(RM) $(NAME)
 
 re:					fclean $(NAME)

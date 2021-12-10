@@ -1,32 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: egiraldi <egiraldi@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/06 12:57:54 by egiraldi          #+#    #+#             */
+/*   Updated: 2021/12/10 15:12:43 by egiraldi         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 #include <stdio.h>
 
-int ft_printf(char *format, ...)
+int	ft_printf(char *format, ...)
 {
-	va_list vargs;
-	t_arg_info arg_info;
-	size_t	len;
-	
+	va_list		vargs;
+	t_arg		current_arg;
+
 	va_start(vargs, format);
-	len = 0;
 	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
-			if (!parse_arg(&format, &arg_info, &vargs))
-				return (-1);
-			char *str = get_into_map(arg_info.specifier).callback(arg_info, &vargs);
-			ft_putstr_fd(str, 1);
-			len += ft_strlen(str);
-			free(str);
+			current_arg = ft_read_arg(&format, &vargs);
 		}
 		else
 		{
-			ft_putchar_fd(*format++, 1);
-			len++;
+			format++;
 		}
 	}
 	va_end(vargs);
-	return (len);
+	return (0);
 }
