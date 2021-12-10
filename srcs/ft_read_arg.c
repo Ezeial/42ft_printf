@@ -12,16 +12,9 @@
 
 #include "ft_printf.h"
 
-static void	ft_init_arg(t_arg *arg)
-{
-	arg->flags = 0;
-	arg->precision = 0;
-	arg->specifier = 0;
-	arg->width = 0;
-}
-
 static void	ft_read_flag(char **format, t_arg *arg)
 {
+	arg->flags = 0;
 	if (**format == '-')
 	{
 		arg->flags |= LJUSTIFY;
@@ -51,6 +44,7 @@ static void	ft_read_flag(char **format, t_arg *arg)
 
 static void	ft_read_width(char **format, t_arg *arg, va_list *vargs)
 {
+	arg->width = 0;
 	while (ft_isdigit(**format))
 	{
 		arg->width = (arg->width * 10) + (**format - '0');
@@ -65,6 +59,7 @@ static void	ft_read_width(char **format, t_arg *arg, va_list *vargs)
 
 static void	ft_read_precision(char **format, t_arg *arg, va_list *vargs)
 {
+	arg->precision = 0;
 	if (**format == '.')
 	{
 		(*format)++;
@@ -81,19 +76,22 @@ static void	ft_read_precision(char **format, t_arg *arg, va_list *vargs)
 	}
 }
 
-static void	ft_read_specifier(char **format, t_arg *arg)
+static void ft_read_specifier(char **format, t_arg *arg)
 {
-
+	if (ft_is_specifier(**format))
+		arg->specifier = **format;
+	else
+		arg->specifier = INVALID;
+	*format++;
 }
 
 t_arg	ft_read_arg(char **format, va_list *vargs)
 {
 	t_arg	arg;
 
-	ft_init_arg(&arg);
 	ft_read_flag(format, &arg);
 	ft_read_width(format, &arg, vargs);
 	ft_read_precision(format, &arg, vargs);
-	arg.specifier = **format
+	ft_read_specifier(format, &arg);
 	return (arg);
 }

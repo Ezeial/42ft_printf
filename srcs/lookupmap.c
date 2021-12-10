@@ -39,7 +39,7 @@ t_lookup	g_lookupmap[] = {
 }
 };
 
-int	ft_is_specifier(char specifier)
+int	ft_is_specifier(t_specifier specifier)
 {
 	size_t	i;
 

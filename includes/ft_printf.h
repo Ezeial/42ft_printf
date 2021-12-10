@@ -27,7 +27,8 @@ typedef enum e_specifier {
 	UNSIGNED_INTEGER = 'u',
 	HEXA_UPPER = 'X',
 	HEXA_LOWER = 'x',
-	PERCENT = '%'
+	PERCENT = '%',
+	INVALID = 0
 }	t_specifier;
 
 typedef enum e_flag {
@@ -50,7 +51,7 @@ typedef struct lookup {
 	char		*(*callback)(t_arg, va_list*);
 }	t_lookup;
 
-int			ft_is_specifier(char specifier);
+int			ft_is_specifier(t_specifier specifier);
 t_lookup	get_into_map(t_specifier specifier);
 t_arg		ft_read_arg(char **format, va_list *vargs);
 

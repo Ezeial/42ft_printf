@@ -14,6 +14,6 @@
 
 int	main(int ac, char **av)
 {
-	ft_printf("%-050s", "salut a tous");
+	ft_printf("%s", "salut a tous");
 	return (0);
 }

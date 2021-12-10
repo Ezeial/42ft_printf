@@ -12,11 +12,13 @@
 
 #include "ft_printf.h"
 
-// char	*handle_char(t_arg arg, va_list *vargs)
-// {
-	// char	str[2];
+char	*handle_char(t_arg arg, va_list *vargs)
+{
+	char *raw_str;
 
-	// str[0] = va_arg(*vargs, int);
-	// str[1] = '\0';
-	// return (ft_strdup(str));
-// }
+	raw_str = malloc(sizeof(char) * 2);
+	if (!raw_str)
+		return (NULL);
+	raw_str[0] = va_arg(*vargs, int);
+	raw_str[1] = 0;	
+}

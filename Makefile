@@ -1,6 +1,6 @@
 LIBFT_DIR			=	libft
 SRCS_DIR			=	srcs
-HEADER_DIR				=	includes
+HEADER_DIR			=	includes
 
 SRCS				=	$(wildcard $(SRCS_DIR)/*.c) \
 							# $(wildcard $(SRCS_DIR)/*/*.c) \
@@ -10,11 +10,11 @@ OBJS				=	$(SRCS:.c=.o)
 
 CC					=	gcc
 RM					=	rm -f
-FLAGS				=	-g -Wall -Wextra -Werror -I./$(HEADER_DIR)
+FLAGS				=	-g -Wall -Wextra -I./$(HEADER_DIR)
 
 NAME				=	libftprintf.a
 
-%.o:				%.c $(HEADER_DIR)/libftprintf.h
+%.o:				%.c $(HEADER_DIR)/ft_printf.h
 					$(CC) $(FLAGS) -c $< -o $@
 
 all:				$(NAME)
