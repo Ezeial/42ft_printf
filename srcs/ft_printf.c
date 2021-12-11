@@ -13,12 +13,14 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-int	ft_printf(char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	va_list		vargs;
 	t_arg		current_arg;
 	char		*builded_arg;
+	int			printed_len;
 
+	printed_len = 0;
 	va_start(vargs, format);
 	while (*format)
 	{
@@ -27,17 +29,19 @@ int	ft_printf(char *format, ...)
 			format++;
 			current_arg = ft_read_arg(&format, &vargs);
 			if (current_arg.specifier == INVALID)
-				return (1);
+				return (-1);
 			builded_arg = get_into_map(current_arg.specifier).callback(current_arg, &vargs);
 			ft_putstr_fd(builded_arg, 1);
+			printed_len += ft_strlen(builded_arg);
 			free(builded_arg);
 		}
 		else
 		{
 			ft_putchar_fd(*format, 1);
+			printed_len++;
 			format++;
 		}
 	}
 	va_end(vargs);
-	return (0);
+	return (printed_len);
 }

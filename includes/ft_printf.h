@@ -68,6 +68,6 @@ char		*handle_hexa(t_arg arg, va_list *vargs);
 char		*handle_pointer(t_arg arg, va_list *vargs);
 char		*handle_percent(t_arg arg, va_list *vargs);
 
-int			ft_printf(char *format, ...);
+int			ft_printf(const char *format, ...);
 
 #endif
