@@ -26,8 +26,10 @@ int	ft_printf(char *format, ...)
 		{
 			format++;
 			current_arg = ft_read_arg(&format, &vargs);
-			builded_arg = get_into_map(current_arg.specifier).callback(current_arg, vargs);
-			ft_putstr_fd(*format, 1);
+			if (current_arg.specifier == INVALID)
+				return (1);
+			builded_arg = get_into_map(current_arg.specifier).callback(current_arg, &vargs);
+			ft_putstr_fd(builded_arg, 1);
 			free(builded_arg);
 		}
 		else

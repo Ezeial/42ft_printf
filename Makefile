@@ -3,7 +3,7 @@ SRCS_DIR			=	srcs
 HEADER_DIR			=	includes
 
 SRCS				=	$(wildcard $(SRCS_DIR)/*.c) \
-							# $(wildcard $(SRCS_DIR)/*/*.c) \
+							$(wildcard $(SRCS_DIR)/*/*.c) \
 							# $(wildcard $(SRCS_DIR)/*/*/*.c)
 
 OBJS				=	$(SRCS:.c=.o)

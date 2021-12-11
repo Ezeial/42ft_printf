@@ -55,6 +55,10 @@ int			ft_is_specifier(t_specifier specifier);
 t_lookup	get_into_map(t_specifier specifier);
 t_arg		ft_read_arg(char **format, va_list *vargs);
 
+char		*ft_add_precision(char *current_str, t_arg arg);
+char		*ft_add_sign(char *current_str, t_arg arg);
+char	 	*ft_add_padding(char *current_str, t_arg arg);
+
 char		*handle_decimal(t_arg arg, va_list *vargs);
 char		*handle_string(t_arg arg, va_list *vargs);
 char		*handle_char(t_arg arg, va_list *vargs);

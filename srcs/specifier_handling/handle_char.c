@@ -14,11 +14,13 @@
 
 char	*handle_char(t_arg arg, va_list *vargs)
 {
-	char *raw_str;
+	char raw_str[2];
+	char *padded_str;
 
-	raw_str = malloc(sizeof(char) * 2);
-	if (!raw_str)
-		return (NULL);
 	raw_str[0] = va_arg(*vargs, int);
 	raw_str[1] = 0;	
+	padded_str = ft_add_padding(raw_str, arg);
+	if (!padded_str)
+		return (NULL);
+	return (padded_str);
 }

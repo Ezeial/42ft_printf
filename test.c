@@ -11,9 +11,11 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 int	main(int ac, char **av)
 {
-	ft_printf("%s", "salut a tous");
+	ft_printf("|%.10d| |% 2d| |%+d| |% d| |%+d|\n", -42, 42, 42, -42, -42);
+	printf("|%.10d| |% 2d| |%+d| |% d| |%+d|\n", -42, 42, 42, -42, -42);
 	return (0);
 }

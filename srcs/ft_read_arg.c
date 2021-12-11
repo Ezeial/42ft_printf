@@ -82,7 +82,7 @@ static void ft_read_specifier(char **format, t_arg *arg)
 		arg->specifier = **format;
 	else
 		arg->specifier = INVALID;
-	*format++;
+	(*format)++;
 }
 
 t_arg	ft_read_arg(char **format, va_list *vargs)
