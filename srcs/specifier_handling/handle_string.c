@@ -2,7 +2,5 @@
 
 char *handle_string(t_arg arg, va_list *vargs)
 {
-	char *str;
-
-	return (str);
+	return (ft_add_padding(va_arg(*vargs, char *), arg));
 }

@@ -15,7 +15,9 @@
 
 int	main(int ac, char **av)
 {
-	ft_printf("|%.10d| |% 2d| |%+d| |% d| |%+d|\n", -42, 42, 42, -42, -42);
-	printf("|%.10d| |% 2d| |%+d| |% d| |%+d|\n", -42, 42, 42, -42, -42);
+	char *zgeg = "aa";
+
+	ft_printf("%#15.12X\n", 4294967295);
+	printf("%#15.12X\n", 4294967295);
 	return (0);
 }

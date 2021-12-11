@@ -10,7 +10,7 @@ OBJS				=	$(SRCS:.c=.o)
 
 CC					=	gcc
 RM					=	rm -f
-FLAGS				=	-g -Wall -Wextra -I./$(HEADER_DIR)
+FLAGS				=	-g -Wall -Wextra -fsanitize=address -I./$(HEADER_DIR)
 
 NAME				=	libftprintf.a
 

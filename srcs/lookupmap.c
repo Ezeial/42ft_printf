@@ -18,6 +18,14 @@ t_lookup	g_lookupmap[] = {
 	.callback = handle_decimal
 },
 {
+	.specifier = INTEGER,
+	.callback = handle_decimal
+},
+{
+	.specifier = UNSIGNED_INTEGER,
+	.callback = handle_unsigned
+},
+{
 	.specifier = STRING,
 	.callback = handle_string
 },
@@ -30,11 +38,19 @@ t_lookup	g_lookupmap[] = {
 	.callback = handle_hexa
 },
 {
+	.specifier = HEXA_UPPER,
+	.callback = handle_hexa
+},
+{
 	.specifier = POINTER,
 	.callback = handle_pointer
 },
 {
-	.specifier = '\0',
+	.specifier = PERCENT,
+	.callback = handle_percent
+},
+{
+	.specifier = INVALID,
 	.callback = NULL
 }
 };
