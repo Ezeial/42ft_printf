@@ -59,9 +59,10 @@ static void	ft_read_width(char **format, t_arg *arg, va_list *vargs)
 
 static void	ft_read_precision(char **format, t_arg *arg, va_list *vargs)
 {
-	arg->precision = 0;
+	arg->precision = -1;
 	if (**format == '.')
 	{
+		arg->flags |= PRECISION;
 		(*format)++;
 		while (ft_isdigit(**format))
 		{

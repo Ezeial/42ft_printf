@@ -5,6 +5,8 @@ char *ft_add_precision(char *current_str, t_arg arg)
 	size_t	len;
 	char	*precise_str;
 
+	if (!(arg.flags & PRECISION))
+		return (ft_strdup(current_str));
 	if (current_str[0] == '0' && arg.precision == 0)
 		return (ft_strdup(""));
 	len = ft_strlen(current_str);

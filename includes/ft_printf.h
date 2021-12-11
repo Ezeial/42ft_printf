@@ -37,6 +37,7 @@ typedef enum e_flag {
 	SPACE = 0x04,
 	HASH = 0x08,
 	ZPAD = 0x10,
+	PRECISION = 0x20
 }	t_flag;
 
 typedef struct arg {

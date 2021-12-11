@@ -12,12 +12,13 @@
 
 #include "ft_printf.h"
 #include <stdio.h>
+#include <limits.h>
 
 int	main(int ac, char **av)
 {
 	char *zgeg = "aa";
 
-	printf(" %c %c %c \n", '0', 0, '1');
-	ft_printf(" %c %c %c \n", '0', 0, '1');
+	ft_printf(" %u \n", LONG_MIN);
+	printf(" %u \n", LONG_MIN);
 	return (0);
 }
