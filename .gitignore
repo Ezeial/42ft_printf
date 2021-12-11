@@ -1,3 +1,7 @@
+runtest.sh
+test.c
+a.out
+
 # Prerequisites
 *.d
 
