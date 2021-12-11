@@ -27,7 +27,7 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			current_arg = ft_read_arg(&format, &vargs);
+			current_arg = ft_read_arg((char **)&format, &vargs);
 			if (current_arg.specifier == INVALID)
 				return (-1);
 			builded_arg = get_into_map(current_arg.specifier).callback(current_arg, &vargs);

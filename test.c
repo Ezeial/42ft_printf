@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 {
 	char *zgeg = "aa";
 
-	ft_printf(" %u \n", LONG_MIN);
-	printf(" %u \n", LONG_MIN);
+	ft_printf(" %u \n", 9223372036854775807LL);
+	printf(" %u \n", 9223372036854775807LL);
 	return (0);
 }
