@@ -6,20 +6,21 @@
 /*   By: egiraldi <egiraldi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:57:54 by egiraldi          #+#    #+#             */
-/*   Updated: 2022/05/17 02:27:33 by egiraldi         ###   ########lyon.fr   */
+/*   Updated: 2022/05/17 03:12:52 by egiraldi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-static int	ft_process_arg(char **format, size_t *printed_len, va_list *vargs)
+static int	ft_process_arg(const char **format,
+	size_t *printed_len, va_list *vargs)
 {
 	t_arg	current_arg;
 	char	*builded_arg;
 
 	(*format)++;
-	current_arg = ft_read_arg(format, vargs);
+	current_arg = ft_read_arg((char **)format, vargs);
 	if (current_arg.specifier == INVALID)
 		return (-1);
 	builded_arg = get_into_map(current_arg.specifier)
@@ -29,13 +30,12 @@ static int	ft_process_arg(char **format, size_t *printed_len, va_list *vargs)
 	ft_putstr_fd(builded_arg, 1);
 	*printed_len += ft_strlen(builded_arg);
 	free(builded_arg);
+	return (1);
 }
 
 int	ft_printf(const char *format, ...)
 {
 	va_list		vargs;
-	t_arg		current_arg;
-	char		*builded_arg;
 	size_t		printed_len;
 
 	printed_len = 0;
