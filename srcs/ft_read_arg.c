@@ -6,7 +6,7 @@
 /*   By: egiraldi <egiraldi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 13:48:52 by egiraldi          #+#    #+#             */
-/*   Updated: 2021/12/10 16:07:44 by egiraldi         ###   ########lyon.fr   */
+/*   Updated: 2022/05/17 02:51:04 by egiraldi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,6 @@ static void	ft_read_flag(char **format, t_arg *arg)
 	if (**format == '#')
 	{
 		arg->flags |= HASH;
-		(*format)++;
-	}
-	if (**format == '0')
-	{
-		arg->flags |= ZPAD;
 		(*format)++;
 	}
 }
@@ -77,7 +72,7 @@ static void	ft_read_precision(char **format, t_arg *arg, va_list *vargs)
 	}
 }
 
-static void ft_read_specifier(char **format, t_arg *arg)
+static void	ft_read_specifier(char **format, t_arg *arg)
 {
 	if (ft_is_specifier(**format))
 		arg->specifier = **format;
@@ -91,6 +86,11 @@ t_arg	ft_read_arg(char **format, va_list *vargs)
 	t_arg	arg;
 
 	ft_read_flag(format, &arg);
+	if (**format == '0')
+	{
+		arg.flags |= ZPAD;
+		(*format)++;
+	}
 	ft_read_width(format, &arg, vargs);
 	ft_read_precision(format, &arg, vargs);
 	ft_read_specifier(format, &arg);

@@ -3,14 +3,13 @@ SRCS_DIR			=	srcs
 HEADER_DIR			=	includes
 
 SRCS				=	$(wildcard $(SRCS_DIR)/*.c) \
-							$(wildcard $(SRCS_DIR)/*/*.c) \
-							# $(wildcard $(SRCS_DIR)/*/*/*.c)
+							$(wildcard $(SRCS_DIR)/*/*.c)
 
 OBJS				=	$(SRCS:.c=.o)
 
 CC					=	gcc
 RM					=	rm -f
-FLAGS				=	-g -Wall -Wextra -I./$(HEADER_DIR)
+FLAGS				=	-Wall -Wextra -I./$(HEADER_DIR)
 
 NAME				=	libftprintf.a
 

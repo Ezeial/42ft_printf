@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_add_sign.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: egiraldi <egiraldi@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/16 21:55:28 by egiraldi          #+#    #+#             */
+/*   Updated: 2022/05/17 02:17:23 by egiraldi         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-char *ft_add_sign(char *current_str, t_arg arg)
+char	*ft_add_sign(char *current_str, t_arg arg)
 {
 	char	*signed_str;
 
@@ -8,7 +20,8 @@ char *ft_add_sign(char *current_str, t_arg arg)
 	{
 		if (*current_str != '-')
 		{
-			signed_str = (char *)malloc(sizeof(char) * (ft_strlen(current_str) + 2));
+			signed_str = (char *)malloc(sizeof(char)
+					* (ft_strlen(current_str) + 2));
 			if (!signed_str)
 				return (NULL);
 			if (arg.flags & SIGN)
