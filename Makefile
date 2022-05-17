@@ -2,14 +2,17 @@ LIBFT_DIR			=	libft
 SRCS_DIR			=	srcs
 HEADER_DIR			=	includes
 
-SRCS				=	$(wildcard $(SRCS_DIR)/*.c) \
-							$(wildcard $(SRCS_DIR)/*/*.c)
+SRCS_FLAT			=	flag_process/ft_add_hash.c flag_process/ft_add_padding.c flag_process/ft_add_precision.c flag_process/ft_add_sign.c \
+						specifier_handling/handle_char.c specifier_handling/handle_decimal.c specifier_handling/handle_hexa.c specifier_handling/handle_percent.c \
+						specifier_handling/handle_pointer.c specifier_handling/handle_string.c specifier_handling/handle_unsigned.c ft_printf.c ft_read_arg.c lookupmap.c
+
+SRCS				=	$(addprefix srcs/, $(SRCS_FLAT)) 
 
 OBJS				=	$(SRCS:.c=.o)
 
 CC					=	gcc
 RM					=	rm -f
-FLAGS				=	-Wall -Wextra -I./$(HEADER_DIR)
+FLAGS				=	-Wall -Wextra -Werror -I./$(HEADER_DIR)
 
 NAME				=	libftprintf.a
 
@@ -33,4 +36,6 @@ fclean:				clean
 
 re:					fclean $(NAME)
 
-.PHONY:				all clean fclean re bonus so
+bonus:				all
+
+.PHONY:				all clean fclean re bonus
